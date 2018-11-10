@@ -6,3 +6,36 @@
  <p>(As compared to the average consumption of a US household.)</p>
 
  <h2> Green Score = <%= @property_result.green_score %></h2>
+
+ <!--The div element for the map -->
+ <div id="map"></div>
+ <script>
+ // Initialize and add the map
+ function initMap() {
+   // The location of Uluru
+   var coordinates = {lat: <%= @property_result.latitude %>, lng: <%= @property_result.longitude %>};
+   // The map, centered at Uluru
+   var map = new google.maps.Map(
+       document.getElementById('map'), {zoom: 12, center: coordinates});
+   // The marker, positioned at Uluru
+   var marker = new google.maps.Marker({position: coordinates, map: map});
+  <% @stations.each do |station|  %>
+
+     var position = new google.maps.LatLng(<%= station.latitude %>, <%= station.longitude %>);
+     // bounds.extend(position);
+     marker = new google.maps.Marker({
+       position: position,
+       map: map,
+       title: <%= station.name.to_json.html_safe %>
+     });
+  <% end %>
+ }
+ </script>
+ <!--Load the API from the specified URL
+ * The async attribute allows the browser to render the page while the API loads
+ * The key parameter will contain your own API key (which is not needed for this tutorial)
+ * The callback parameter executes the initMap() function
+ -->
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+ </script>
