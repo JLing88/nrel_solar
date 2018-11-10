@@ -14,7 +14,7 @@
         <%= form_tag :property, method: :get, class: "location-search" do %>
           <%= label_tag :address, "Search for", class: "sr-only", placeholder: "Address" %>Enter Address
           <%= text_field_tag :address %>
-          <%= submit_tag "Find Local Energy Data", class:"btn btn-primary mb-2" %>
+          <%= submit_tag "Find Local Energy Data", class:"btn btn-success mb-2" %>
         <% end %>
       </div>
     <%= yield %>

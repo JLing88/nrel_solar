@@ -1,14 +1,15 @@
-<br/><h3><%= @property_result.address %></h3>
+<h2 class="text-center"><%= @property_result.address %></h2>
 
-<table class='table'>
+
+<table class="table table-hover table-sm">
   <tbody>
-    <tr>
+    <tr class="table-success">
       <th scope='col'>Number of Electric Charging Stations within 3 miles: <%= @property_result.station_count %></th>
     </tr>
-    <tr>
+    <tr class="table-success">
       <th scope='col'>Percentage of Energy Covered with Solar: <%= @property_result.ac_coverage.round %>%</th>
     </tr>
-    <tr>
+    <tr class="table-success">
       <th scope='col'> Green Score: <%= @property_result.green_score %></th>
     </tr>
   </tbody>
