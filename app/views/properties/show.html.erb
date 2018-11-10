@@ -10,11 +10,14 @@
       <th scope='col'>Percentage of Energy Covered with Solar: <%= @property_result.ac_coverage.round %>%</th>
     </tr>
     <tr class="table-success">
-      <th scope='col'> Green Score: <%= @property_result.green_score %></th>
+      <th scope='col'>Green Score: <%= @property_result.green_score %> / 10</th>
     </tr>
   </tbody>
 </table>
- <div id="map"></div>
+
+<br/>
+<h4 class='text-center'>Location of nearby Electric Charging Stations</h4>
+ <div id="map">
  <script>
     function initMap() {
       var coordinates = {lat: <%= @property_result.latitude %>, lng: <%= @property_result.longitude %>};
@@ -45,3 +48,4 @@
  <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
  </script>
+ </div>
