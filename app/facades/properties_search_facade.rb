@@ -8,8 +8,12 @@ class PropertiesSearchFacade
     energy_service.ac_annual
   end
 
-  def station
-    nrel_station_service.get_stations(@address)
+  def all_stations
+    @stations ||= nrel_station_service.get_stations(@address)
+  end
+
+  def station_count
+    all_stations[:total_results]
   end
 
   private

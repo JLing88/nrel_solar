@@ -2,7 +2,7 @@ require 'rails_helper'
 describe PropertiesSearchFacade do
   it 'exists' do
     facade = PropertiesSearchFacade.new("10000 E Alameda Ave. , Denver CO 80247")
-    
+
     expect(facade).to be_a(PropertiesSearchFacade)
   end
   it 'returns AC annual' do
@@ -13,8 +13,7 @@ describe PropertiesSearchFacade do
   it 'returns the stations' do
     facade = PropertiesSearchFacade.new("10000 E Alameda Ave, Denver CO 80247")
 
-    expect(facade.station).to have_key(:total_results)
-    expect(facade.station[:total_results]).to eq(6)
-
+    expect(facade.all_stations).to have_key(:total_results)
+    expect(facade.station_count).to eq(6)
   end
 end
