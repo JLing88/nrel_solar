@@ -14,26 +14,35 @@
     </tr>
   </tbody>
 </table>
- <!--The div element for the map -->
+
 <br/>
 <h4 class='text-center'>Location of nearby Electric Charging Stations</h4>
  <div id="map">
  <script>
- function initMap() {
-   var coordinates = {lat: <%= @property_result.latitude %>, lng: <%= @property_result.longitude %>};
-   var map = new google.maps.Map(
+    function initMap() {
+      var coordinates = {lat: <%= @property_result.latitude %>, lng: <%= @property_result.longitude %>};
+      var map = new google.maps.Map(
        document.getElementById('map'), {zoom: 12, center: coordinates});
-   var marker = new google.maps.Marker({position: coordinates, map: map});
-  <% @stations.each do |station|  %>
+      var marker = new google.maps.Marker({position: coordinates, map: map});
+      var bounds = new google.maps.LatLngBounds();
 
-     var position = new google.maps.LatLng(<%= station.latitude %>, <%= station.longitude %>);
-     marker = new google.maps.Marker({
-       position: position,
-       map: map,
-       title: <%= station.name.to_json.html_safe %>
-     });
-  <% end %>
- }
+      <% @stations.each do |station|  %>
+        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        var position = new google.maps.LatLng(<%= station.latitude %>, <%= station.longitude %>);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: <%= station.name.to_json.html_safe %>,
+          icon: image
+        });
+      <% end %>
+      map.fitBounds(bounds);
+      var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+          this.setZoom(14);
+          google.maps.event.removeListener(boundsListener);
+      });
+    }
  </script>
 
  <script async defer
