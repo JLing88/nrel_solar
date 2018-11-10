@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <%= form_tag :property, method: :get, class:"location-search" do %>
+      <%= label_tag :address, "Search for" %>
+      <%= text_field_tag :address %>
+      <%= submit_tag "Find Local Energy Data" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
