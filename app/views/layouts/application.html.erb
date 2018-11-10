@@ -17,12 +17,13 @@
   </head>
 
   <body>
-    <%= form_tag :property, method: :get, class:"location-search" do %>
-      <%= label_tag :address, "Search for" %>
-      <%= text_field_tag :address %>
-      <%= submit_tag "Find Local Energy Data" %>
-    <% end %>
-
+      <div class="form-group mx-sm-3 mb-2">
+        <%= form_tag :property, method: :get, class: "location-search" do %>
+          <%= label_tag :address, "Search for", class: "sr-only", placeholder: "Address" %>Enter Address
+          <%= text_field_tag :address %>
+          <%= submit_tag "Find Local Energy Data", class:"btn btn-success mb-2" %>
+        <% end %>
+      </div>
     <%= yield %>
 
   </body>
