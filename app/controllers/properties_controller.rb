@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  def show
+  def index
     coordinates = Geocoder.search(params[:address]).first.coordinates
   end
 end
