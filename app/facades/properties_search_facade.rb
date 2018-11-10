@@ -25,6 +25,14 @@ class PropertiesSearchFacade
     station_score + ac_score
   end
 
+  def latitude
+    Geocoder.search(@address).first.coordinates[0]
+  end
+
+  def longitude
+    Geocoder.search(@address).first.coordinates[1]
+  end
+
   private
 
   def google_service
