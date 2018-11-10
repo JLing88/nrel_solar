@@ -5,6 +5,7 @@ class PropertiesSearchFacade
   end
 
   def ac_annual
+    energy_service.ac_annual
   end
 
   private
@@ -13,5 +14,7 @@ class PropertiesSearchFacade
     GoogleGeocodeService.new
   end
 
-
+  def energy_service
+    EnergyOutputService.new(@address)
+  end
 end
