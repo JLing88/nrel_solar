@@ -74,7 +74,6 @@ class PropertiesSearchFacade
     }
   end
 
-
   def ac_score
     ac_score_converter.select do |count, score|
       count === ac_coverage
