@@ -1,5 +1,8 @@
 class PropertiesController < ApplicationController
-  def index
-    coordinates = Geocoder.search(params[:address]).first.coordinates
+  def show
+    @address = params[:address]
+    facade = PropertiesSearchFacade.new(@address)
+    @green_score = facade.green_score
+    # coordinates = Geocoder.search(params[:address]).first.coordinates
   end
 end

@@ -11,6 +11,7 @@ feature 'As a user on the home page' do
 
   scenario 'search returns green score for address' do
     expect(current_path).to eq(property_path)
-    expect(page).to have_content('Green Score = 6')
+    expect(page).to have_content('10000 E Alameda Ave. , Denver CO 80247')
+    expect(page).to have_content('Green Score = 8')
   end
 end
