@@ -1,4 +1,5 @@
 class PropertiesSearchFacade
+  attr_reader :address
 
   def initialize(address)
     @address = address
@@ -6,6 +7,10 @@ class PropertiesSearchFacade
 
   def ac_annual
     energy_service.ac_annual
+  end
+
+  def ac_coverage
+    (ac_annual / 10800) * 100
   end
 
   def all_stations
@@ -61,9 +66,6 @@ class PropertiesSearchFacade
     }
   end
 
-  def ac_coverage
-    (ac_annual / 10800) * 100
-  end
 
   def ac_score
     ac_score_converter.select do |count, score|
