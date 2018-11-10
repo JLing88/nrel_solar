@@ -1,3 +1,8 @@
-<h1>Address = <%= @address %></h1>
+<h1>Address = <%= @property_result.address %></h1>
 
- <h2> Green Score = <%= @green_score %></h2>
+ <h2>Number of Electric Charging Stations within 3 miles: <%= @property_result.station_count %></h2>
+
+ <h2>Percentage of Energy Covered with Solar: <%= @property_result.ac_coverage.round %>%</h2>
+ <p>(As compared to the average consumption of a US household.)</p>
+
+ <h2> Green Score = <%= @property_result.green_score %></h2>
