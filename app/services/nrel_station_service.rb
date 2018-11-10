@@ -1,6 +1,6 @@
 class NrelStationService
   def initialize
-    @fuel_type = "BD, ELEC"
+    @fuel_type = "ELEC"
   end
 
   def get_stations(location)
