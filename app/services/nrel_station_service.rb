@@ -1,10 +1,10 @@
-class NrelService
+class NrelStationService
   def initialize
     @fuel_type = "BD, ELEC"
   end
 
   def get_stations(location)
-    get_json("/api/alt-fuel-stations/v1/nearest.json?location=#{location}&radius=10.0&fuel_type=#{@fuel_type}&access=public")
+    get_json("/api/alt-fuel-stations/v1/nearest.json?location=#{location}&radius=3.0&fuel_type=#{@fuel_type}&access=public")
   end
 
   private
