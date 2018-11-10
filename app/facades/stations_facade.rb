@@ -13,6 +13,6 @@ class StationsFacade
   private
 
   def service
-    NrelService.new
+    NrelStationService.new
   end
 end

@@ -8,6 +8,10 @@ class PropertiesSearchFacade
     energy_service.ac_annual
   end
 
+  def station
+    nrel_station_service.get_stations(@address)
+  end
+
   private
 
   def google_service
@@ -16,5 +20,9 @@ class PropertiesSearchFacade
 
   def energy_service
     EnergyOutputService.new(@address)
+  end
+
+  def nrel_station_service
+    NrelStationService.new
   end
 end
