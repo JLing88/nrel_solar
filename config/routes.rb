@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'locations#index'
-  resources :locations, only: [:index]
-#   get '/locations', to: "locations#index"
+  root to: 'home#index'
+  get '/property', to: 'properties#show', as: 'property'
 end
